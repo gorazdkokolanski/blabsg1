@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body id="home-body">
+
+    <style>
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: url('helvet/HelveticaNeueLight.ttf') format('truetype');
+            font-weight: 300;
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: url('helvet/HelveticaNeueRegular.ttf') format('truetype');
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: url('helvet/HelveticaNeueMedium.ttf') format('truetype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Helvetica Neue';
+            src: url('helvet/HelveticaNeueBold.ttf') format('truetype');
+            font-weight: 700;
+        }
+
+
+
+
+
+
+        /* Global Styles */
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            min-height: 650px;
+        }
+
+        header,
+        section,
+        footer {
+            width: 100%;
+            position: relative;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1800px;
+            padding: 0 10px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        a {
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+
+
+
+
+        /* Header Styles */
+
+        header {
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 20;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            border-bottom: 1px solid black;
+            width: 95%;
+        }
+
+        .leftHeader {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .leftHeader img {
+            height: 48px;
+        }
+
+        .rightHeader {}
+
+        .rightHeader ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 25px;
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .rightHeader a {
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .rightHeader li {
+            padding-bottom: 3px;
+
+        }
+
+        .selected-header {
+            font-weight: 700;
+            border-bottom: 3px solid black;
+            padding-bottom: 0;
+        }
+
+        .selected-header li {
+            padding-bottom: 0;
+        }
+
+        .burger {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media only screen and (max-width:768px) {
+
+            header {
+                overflow-x: hidden;
+            }
+
+            .rightHeader ul {
+                display: none;
+            }
+
+            .header-container {
+                border: none;
+                height: 100px;
+            }
+
+            .burger {
+                display: flex;
+                margin-right: 5px;
+            }
+
+            .mobile-menu {
+                display: flex;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 200;
+                height: 100%;
+                display: none;
+            }
+
+            .mobile-menu>div:nth-child(1) {
+                background-color: rgba(0, 0, 0, 0.3);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transform: translateX(100%);
+            }
+
+            .mobile-menu>div:nth-child(2) {
+                background-color: white;
+                height: 100%;
+                width: 320px;
+                display: flex;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+                transform: translateX(100%);
+                transition: 0.2s all ease;
+            }
+
+            .mobile-header {
+                width: 100%;
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .mobile-header>img {
+                margin-left: 10px;
+            }
+
+            .mobile-header>div {
+                margin-right: 10px;
+            }
+
+            .mobile-options {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .mobile-options>a {
+                height: 60px;
+                width: 80%;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                font-size: 16px;
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-right: 30px;
+            }
+
+            .selected-mobile-option {
+                font-weight: 700 !important;
+            }
+        }
+
+
+
+
+
+
+
+
+        /* Home Styles */
+
+        #home-body {
+            background-color: rgba(255, 194, 14, 1);
+            min-height: 650px;
+            height: 97vh;
+            width: 100%;
+        }
+
+        #home {
+            height: 100%;
+        }
+
+        .homeAbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .home-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+        }
+
+        .abs-container {
+            position: absolute;
+            top: 47%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            width: 95%;
+        }
+
+        .abs-container>div:nth-child(1) {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abs-container h1 {
+            font-weight: 300;
+            font-size: 124px;
+        }
+
+        .abs-container>div:nth-child(1) img {
+            height: 140px;
+        }
+
+        .home-buttons {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .home-buttons>a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 400;
+            font-size: 22px;
+            justify-content: center;
+            height: 48px;
+            border: 2px solid black;
+            border-radius: 6px;
+        }
+
+        .home-buttons>a:hover {
+            background-color: black;
+            color: rgba(255, 194, 14, 1);
+            overflow: hidden;
+        }
+
+        .home-buttons>a:hover>img {
+            filter: drop-shadow(rgba(255, 194, 14, 1) 0px 40px);
+            transform: translateY(-40px);
+        }
+
+        .home-buttons>img {
+            height: 16.5px;
+        }
+
+        .homeFooter {
+            display: flex;
+            flex-direction: column;
+            width: 99%;
+            gap: 30px;
+        }
+
+        .homeFooter1 {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .homeFooter1>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .homeFooter1 img {
+            opacity: 0.7;
+        }
+
+        .homeFooter2 {
+            height: 1px;
+            width: 100%;
+            background-color: black;
+        }
+
+        .homeFooter3 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .homeFooter3Left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .homeFooter3Right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .homeFooter3 a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media only screen and (max-width:768px) {
+
+            #home {}
+
+            .home-container {
+                min-height: 650px;
+            }
+
+            .abs-container h1 {
+                font-size: 40px;
+            }
+
+            .abs-container>div:nth-child(1) img {
+                height: 48px;
+            }
+
+            .home-buttons {
+                flex-direction: column;
+                width: 65%;
+            }
+
+            .home-buttons>a {
+                width: 100%;
+                height: 42px;
+                font-size: 16px;
+                flex: unset;
+            }
+
+            .homeFooter {
+                gap: 15px;
+            }
+
+            .homeFooter1 {
+                display: none;
+            }
+
+            .homeFooter3 {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .homeFooter3Left img {
+                display: none;
+            }
+
+            .homeFooter3Left {
+                width: 80%;
+                font-size: 14px;
+                font-weight: 400;
+            }
+
+            .homeFooter3Right img {
+                height: 18px;
+            }
+
+            .homeFooter3Right {
+                font-size: 14px;
+            }
+
+            .homeAbs {
+                height: 300px;
+            }
+
+        }
+    </style>
+
+    <img src="img/homeAbs.png" alt="home-rings" class="homeAbs">
+
+    <div class="mobile-menu">
+        <div></div>
+        <div>
+            <div class="mobile-header">
+                <img src="img/headerLogo.svg" alt="mobile-logo">
+                <div class="mobilex">
+                    <img src="img/mobilex.svg" alt="mobile-x">
+                </div>
+            </div>
+
+            <div class="mobile-options">
+                <a href="index.html" class="selected-mobile-option">Home</a>
+                <a href="about.html">
+                    About us
+                </a>
+                <a href="https://www.bcorporation.net/en-us/find-a-b-corp/?refinement%5Bcountries%5D%5B0%5D=Singapore">
+                    Our B Corps
+                </a>
+                <a href="process.html">
+                    The Process
+                </a>
+                <a href="pricing.html">
+                    Pricing
+                </a>
+                <a href="contact.html">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+        <div class="container header-container">
+
+            <div class="leftHeader">
+
+                <a href="index.html"><img src="img/headerLogo.svg" alt="header-logo"></a>
+
+            </div>
+
+            <div class="rightHeader">
+
+                <ul>
+
+                    <a class="selected-header" href="index.html">
+                        <li>Home</li>
+                    </a>
+                    <a href="about.html">
+                        <li>About us</li>
+                    </a>
+                    <a
+                        href="https://www.bcorporation.net/en-us/find-a-b-corp/?refinement%5Bcountries%5D%5B0%5D=Singapore">
+                        <li>Our B Corps</li>
+                    </a>
+                    <a href="process.html">
+                        <li>The Process</li>
+                    </a>
+                    <a href="pricing.html">
+                        <li>Pricing</li>
+                    </a>
+                    <a href="contact.html">
+                        <li>Contact</li>
+                    </a>
+
+                </ul>
+
+                <div class="burger">
+                    <img src="img/burger.svg" alt="burger">
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+    <section id="home">
+
+
+        <div class="container home-container">
+
+            <div class="abs-container">
+
+                <div>
+                    <h1>IT'S TIME TO</h1>
+                    <div>
+                        <img alt="home-logo" src="img/homeLogo.png">
+                    </div>
+                </div>
+
+                <div class="home-buttons">
+
+                    <a href="https://www.eventbrite.sg/e/i-want-to-b-introduction-to-the-b-corp-certification-by-b-lab-singapore-tickets-675845460967"
+                        target="_blank">
+                        <span>Register for webinar</span>
+                        <img alt="button-icon" src="img/home-btn-1.svg">
+                    </a>
+
+                    <a href="https://wa.me/+6582003305" target="_blank">
+                        <span>Whatsapp Us</span>
+                        <img alt="button-icon" src="img/home-button-2.svg">
+                    </a>
+
+                    <a href="mailto: keith.tan@sg.bcorporation.net" target="_blank">
+                        <span>Email Us</span>
+                        <img alt="button-icon" src="img/home-button-3.svg">
+                    </a>
+
+                    <a href="https://app.bimpactassessment.net/" target="_blank">
+                        <span>B Impact Assessment</span>
+                        <img alt="button-icon" src="img/home-button-4.svg">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="homeFooter">
+
+                <div class="homeFooter1">
+                    <div><img src="img/home-footer-1.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-2.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-3.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-4.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-5.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-6.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-7.png" alt="home-icon"></div>
+                    <div><img src="img/home-footer-8.png" alt="home-icon"></div>
+                </div>
+
+                <div class="homeFooter2"></div>
+
+                <div class="homeFooter3">
+
+                    <div class="homeFooter3Left">
+                        <img style="height: 38px;" src="img/headerLogo.svg" alt="footerLogo">
+                        <span>B Corps across the world are transforming the global economy to benefit all people,
+                            communities, and the planet.</span>
+                    </div>
+
+                    <div class="homeFooter3Right">
+                        <a href="#" target="_blank">
+                            <img src="img/instagram.svg" alt="instagram">
+                        </a>
+                        <a href="#" target="_blank">
+                            <img src="img/linkedin.svg" alt="linkedin">
+                        </a>
+                        <a href="#" target="_blank">Privacy Policy</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+    <script src="mobile-menu.js"></script>
+
+</body>
+
+</html>
